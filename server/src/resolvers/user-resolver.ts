@@ -1,14 +1,23 @@
 import { User } from "../entity/user";
 import { Resolver, Query, Mutation, Arg } from "type-graphql";
 import { UserResponse } from "../entity/user-response";
-import {User as UModel} from "../models/user";
+import { User as UModel } from "../models/user";
 
 @Resolver(User)
 export class UserResolver {
   @Query((_) => UserResponse)
-  login(): UserResponse {
-    const res: UserResponse = { ok: false, token: "" };
-
+  async login(
+    @Arg("email") email: string,
+    @Arg("password") password: string
+  ): Promise<UserResponse> {
+    const res: UserResponse = { ok: false};
+    try{
+      const user = await UModel.findUser(email, password);
+      res.ok = true;
+      res.token = user.generateAuthToken();
+    }catch(e){
+      res.message = e.message;
+    }
     return res;
   }
 
@@ -17,14 +26,20 @@ export class UserResolver {
     @Arg("email") email: string,
     @Arg("password") password: string
   ): Promise<UserResponse> {
-    const user = new UModel({email, password});
-
+    const user = new UModel({ email, password });
+    const res : UserResponse = {ok: false}
     try{
       await user.save();
-    } catch(e){
-      throw new Error("Unable to create user");
+      res.ok = true;
+      res.token = user.generateAuthToken();
+    }catch(e){
+      if(e.message.includes("`password` is required")){
+        res.message = "password is required";
+      }else if(e.message.includes("`email` is required")){
+        res.message = "email is required";
+      }
     }
 
-    return {ok: true, token: ""};
+    return res;
   }
 }
