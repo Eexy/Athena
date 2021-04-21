@@ -7,12 +7,14 @@ import { buildSchema } from "type-graphql";
 import { TodoResolver } from "./resolvers/todo-resolver";
 import { ApolloServer } from "apollo-server-express";
 import { UserResolver } from "./resolvers/user-resolver";
+import cookieParser from "cookie-parser";
 
 const main = async () => {
   const PORT = parseInt(process.env.PORT!) || 4000;
   const app: express.Express = express();
 
   app.use(cors());
+  app.use(cookieParser());
 
   const schema = await buildSchema({
     resolvers: [TodoResolver, UserResolver],
