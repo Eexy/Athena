@@ -15,6 +15,7 @@
       - [x] completed
       - [x] desc
       - [x] timestamp
+      - [ ] owner
 - [ ] implement JWT
 - [ ] entity
   - [ ] user

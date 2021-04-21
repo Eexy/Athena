@@ -17,6 +17,7 @@ const schema: Schema = new Schema(
 );
 
 interface Todo extends Document {
+  id: string;
   desc: string;
   completed: boolean;
 }
