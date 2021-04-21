@@ -14,7 +14,6 @@ import { generateAuthToken } from "../utils/generate-auth-token";
 import { Context } from "../utils/types";
 import { sendToken } from "../utils/send-token";
 import { auth } from "../middlewares/auth";
-import mongoose from "mongoose";
 
 @Resolver(User)
 export class UserResolver {

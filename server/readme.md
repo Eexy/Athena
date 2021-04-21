@@ -34,4 +34,5 @@
     - [x] delete
     - [x] update password
     - [x] logout
+- [x] create db on atlas
 - [ ] deploy on heroku
