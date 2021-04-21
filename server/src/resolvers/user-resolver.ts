@@ -9,10 +9,12 @@ import {
 } from "type-graphql";
 import { ConnectResponse } from "../entity/connect-response";
 import { User as UModel } from "../models/user";
+import { Todo as TModel } from "../models/todo";
 import { generateAuthToken } from "../utils/generate-auth-token";
 import { Context } from "../utils/types";
 import { sendToken } from "../utils/send-token";
 import { auth } from "../middlewares/auth";
+import mongoose from "mongoose";
 
 @Resolver(User)
 export class UserResolver {
@@ -47,9 +49,9 @@ export class UserResolver {
 
   @UseMiddleware(auth)
   @Mutation((_) => Boolean)
-  async deleteMe(@Ctx() { userId }: Context) : Promise<Boolean> {
+  async deleteMe(@Ctx() { userId }: Context): Promise<Boolean> {
     await UModel.findByIdAndDelete(userId);
-
+    await TModel.deleteMany({ owner: userId });
     return true;
   }
 
