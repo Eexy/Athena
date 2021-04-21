@@ -10,5 +10,7 @@ export class Todo{
 
   @Field()
   completed: boolean = false;
+
+  owner: string = "";
 }
 

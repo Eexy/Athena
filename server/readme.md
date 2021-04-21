@@ -18,7 +18,7 @@
       - [ ] owner
 - [ ] implement JWT
 - [ ] entity
-  - [ ] user
+  - [x] user
   - [x] todo
 - [ ] resolvers
   - [ ] todo
@@ -30,5 +30,5 @@
   - [ ] user
     - [x] register
     - [x] login
-    - [ ] me
-    - [ ] delete
+    - [x] me
+    - [x] delete

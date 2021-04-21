@@ -1,5 +1,12 @@
 import { User } from "../entity/user";
-import { Resolver, Query, Mutation, Arg, Ctx, UseMiddleware } from "type-graphql";
+import {
+  Resolver,
+  Query,
+  Mutation,
+  Arg,
+  Ctx,
+  UseMiddleware,
+} from "type-graphql";
 import { ConnectResponse } from "../entity/connect-response";
 import { User as UModel } from "../models/user";
 import { generateAuthToken } from "../utils/generate-auth-token";
@@ -9,14 +16,6 @@ import { auth } from "../middlewares/auth";
 
 @Resolver(User)
 export class UserResolver {
-
-  @UseMiddleware(auth)
-  @Query((_) => String)
-  hello(@Ctx() {userId}: Context){
-    console.log(userId);
-    return "Hello World";
-  }
-
   @Mutation((_) => ConnectResponse)
   async login(
     @Arg("email") email: string,
@@ -36,14 +35,22 @@ export class UserResolver {
 
   @UseMiddleware(auth)
   @Query((_) => User)
-  async me(@Ctx() {userId}: Context): Promise<User> {
+  async me(@Ctx() { userId }: Context): Promise<User> {
     const user = await UModel.findById(userId);
 
-    if(!user){
+    if (!user) {
       throw new Error("Unable to fetch current user");
     }
 
     return user;
+  }
+
+  @UseMiddleware(auth)
+  @Mutation((_) => Boolean)
+  async deleteMe(@Ctx() { userId }: Context) : Promise<Boolean> {
+    await UModel.findByIdAndDelete(userId);
+
+    return true;
   }
 
   @Mutation((_) => ConnectResponse)

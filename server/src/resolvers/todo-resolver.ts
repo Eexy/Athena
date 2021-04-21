@@ -1,9 +1,14 @@
 import { Todo } from "../entity/todo";
 import { Todo as TModel } from "../models/todo";
-import { Resolver, Query, Arg, Mutation, InputType, Field } from "type-graphql";
+import { Resolver, Query, Arg, Mutation, UseMiddleware, Ctx } from "type-graphql";
+import { auth } from "../middlewares/auth";
+import { Context } from "../utils/types";
+import mongoose from "mongoose"
 
 @Resolver(Todo)
 export class TodoResolver {
+  
+  @UseMiddleware(auth)
   @Query((_) => Todo, { nullable: true })
   async todo(@Arg("id") id: string): Promise<Todo | null> {
     const todo = await TModel.findById(id);
@@ -15,14 +20,17 @@ export class TodoResolver {
     return todo;
   }
 
+  @UseMiddleware(auth)
   @Mutation((_) => Todo)
-  async createTodo(@Arg("desc") desc: string): Promise<Todo> {
-    const todo = new TModel({ desc });
+  async createTodo(@Arg("desc") desc: string, @Ctx() {userId} : Context): Promise<Todo> {
+    const owner = mongoose.Types.ObjectId(userId)
+    const todo = new TModel({ desc, owner });
     await todo.save();
 
     return todo;
   }
 
+  @UseMiddleware(auth)
   @Mutation((_) => Boolean)
   async deleteTodo(@Arg("id") id: string): Promise<Boolean> {
     await TModel.findByIdAndDelete(id);
@@ -30,6 +38,7 @@ export class TodoResolver {
     return true;
   }
 
+  @UseMiddleware(auth)
   @Mutation((_) => Todo)
   async updateTodoStatus(
     @Arg("id") id: string,

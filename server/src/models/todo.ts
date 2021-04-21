@@ -10,6 +10,10 @@ const schema: Schema = new Schema(
       type: Boolean,
       default: false,
     },
+    owner: {
+      type: Schema.Types.ObjectId,
+      required: true
+    }
   },
   {
     timestamps: true,
@@ -20,6 +24,7 @@ interface ITodo extends Document {
   id: string;
   desc: string;
   completed: boolean;
+  owner: string;
 }
 
 export const Todo: Model<ITodo> = mongoose.model("Todo", schema);
