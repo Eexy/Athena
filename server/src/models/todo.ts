@@ -21,4 +21,4 @@ interface Todo extends Document {
   completed: boolean;
 }
 
-const Todo: Model<Todo> = mongoose.model("Todo", schema);
+export const Todo: Model<Todo> = mongoose.model("Todo", schema);

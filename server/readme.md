@@ -18,4 +18,11 @@
 - [ ] implement JWT
 - [ ] entity
   - [ ] user
+  - [x] todo
+- [ ] resolvers
   - [ ] todo
+    - [x] get todo
+    - [ ] get todos
+    - [x] create todo
+    - [ ] delete todo
+    - [ ] update todo

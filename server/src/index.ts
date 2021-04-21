@@ -3,6 +3,9 @@ import "reflect-metadata";
 import "./utils/db";
 import express from "express";
 import cors from "cors";
+import { buildSchema } from "type-graphql";
+import { TodoResolver } from "./resolvers/todo-resolver";
+import { ApolloServer } from "apollo-server-express";
 
 const main = async () => {
   const PORT = parseInt(process.env.PORT!) || 4000;
@@ -10,7 +13,16 @@ const main = async () => {
 
   app.use(cors());
 
-  app.listen(PORT, () => console.log(`listening port http://localhost:${PORT}`));
-}
+  const schema = await buildSchema({
+    resolvers: [TodoResolver],
+  });
+
+  const apolloServer: ApolloServer = new ApolloServer({ schema });
+  apolloServer.applyMiddleware({ app });
+
+  app.listen(PORT, () =>
+    console.log(`listening port http://localhost:${PORT}`)
+  );
+};
 
 main();

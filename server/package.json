@@ -7,9 +7,10 @@
     "node": "15.4.0"
   },
   "scripts": {
-    "gen-env": "gen-env-types .env -o src/env.d.ts -e .",
     "start": "node dist/index.js",
-    "test": "nodemon --exec ts-node src/index.ts"
+    "build": "tsc",
+    "watch": "tsc -w",
+    "test": "nodemon --exec ts-node ./src/index.ts"
   },
   "author": "",
   "license": "ISC",

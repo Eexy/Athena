@@ -1,8 +1,8 @@
 import { Field, ID, ObjectType } from "type-graphql";
 
 @ObjectType()
-class Todo{
-  @Field(type => ID)
+export class Todo{
+  @Field((_) => ID)
   id: string = "";
 
   @Field()
