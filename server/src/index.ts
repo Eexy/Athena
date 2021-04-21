@@ -6,6 +6,7 @@ import cors from "cors";
 import { buildSchema } from "type-graphql";
 import { TodoResolver } from "./resolvers/todo-resolver";
 import { ApolloServer } from "apollo-server-express";
+import { UserResolver } from "./resolvers/user-resolver";
 
 const main = async () => {
   const PORT = parseInt(process.env.PORT!) || 4000;
@@ -14,7 +15,7 @@ const main = async () => {
   app.use(cors());
 
   const schema = await buildSchema({
-    resolvers: [TodoResolver],
+    resolvers: [TodoResolver, UserResolver],
   });
 
   const apolloServer: ApolloServer = new ApolloServer({ schema });
