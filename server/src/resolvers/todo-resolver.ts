@@ -4,7 +4,7 @@ import { Resolver, Query, Arg, Mutation } from "type-graphql";
 
 @Resolver(Todo)
 export class TodoResolver {
-  @Query((_) => Todo, {nullable: true})
+  @Query((_) => Todo, { nullable: true })
   async todo(@Arg("id") id: string): Promise<Todo | null> {
     const result = await TModel.findById(id);
 
@@ -23,15 +23,22 @@ export class TodoResolver {
 
   @Mutation((_) => Todo)
   async createTodo(@Arg("desc") desc: string): Promise<Todo> {
-    const tmodel = new TModel({desc});
+    const tmodel = new TModel({ desc });
     await tmodel.save();
 
     const todo = {
       id: tmodel.id,
       desc,
-      completed: tmodel.completed
-    }
+      completed: tmodel.completed,
+    };
 
     return todo;
+  }
+
+  @Mutation((_) => Boolean)
+  async deleteTodo(@Arg("id") id: string): Promise<Boolean> {
+    const tmodel = await TModel.findByIdAndDelete(id);
+
+    return true;
   }
 }
