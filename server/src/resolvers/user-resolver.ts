@@ -1,45 +1,50 @@
 import { User } from "../entity/user";
-import { Resolver, Query, Mutation, Arg } from "type-graphql";
-import { UserResponse } from "../entity/user-response";
+import { Resolver, Query, Mutation, Arg, Ctx } from "type-graphql";
+import { ConnectResponse } from "../entity/connect-response";
 import { User as UModel } from "../models/user";
+import { generateAuthToken } from "../utils/generate-auth-token";
+import { Context } from "../utils/types";
+import { sendToken } from "../utils/send-token";
 
 @Resolver(User)
 export class UserResolver {
-  @Query((_) => UserResponse)
+  @Query((_) => ConnectResponse)
   async login(
     @Arg("email") email: string,
-    @Arg("password") password: string
-  ): Promise<UserResponse> {
-    const res: UserResponse = { ok: false};
-    try{
+    @Arg("password") password: string,
+    @Ctx() { res }: Context
+  ): Promise<ConnectResponse> {
+    const loginResponse: ConnectResponse = { ok: false };
+    try {
       const user = await UModel.findUser(email, password);
-      res.ok = true;
-      res.token = user.generateAuthToken();
-    }catch(e){
-      res.message = e.message;
+      loginResponse.ok = true;
+      sendToken(res, generateAuthToken({id: user.id, date: Date.now()}));
+    } catch (e) {
+      loginResponse.message = e.message;
     }
-    return res;
+    return loginResponse;
   }
 
-  @Mutation((_) => UserResponse)
+  @Mutation((_) => ConnectResponse)
   async register(
     @Arg("email") email: string,
-    @Arg("password") password: string
-  ): Promise<UserResponse> {
+    @Arg("password") password: string,
+    @Ctx() {res}: Context
+  ): Promise<ConnectResponse> {
     const user = new UModel({ email, password });
-    const res : UserResponse = {ok: false}
-    try{
+    const registerResponse: ConnectResponse = { ok: false };
+    try {
       await user.save();
-      res.ok = true;
-      res.token = user.generateAuthToken();
-    }catch(e){
-      if(e.message.includes("`password` is required")){
-        res.message = "password is required";
-      }else if(e.message.includes("`email` is required")){
-        res.message = "email is required";
+      registerResponse.ok = true;
+      sendToken(res,generateAuthToken({ id: user.id, date: Date.now() }));
+    } catch (e) {
+      if (e.message.includes("`password` is required")) {
+        registerResponse.message = "password is required";
+      } else if (e.message.includes("`email` is required")) {
+        registerResponse.message = "email is required";
       }
     }
 
-    return res;
+    return registerResponse;
   }
 }

@@ -34,19 +34,6 @@ schema.pre<IUserDocument>('save', async function(next){
   next();
 });
 
-schema.methods.generateAuthToken = function(){
-  const user = this;
-  
-  const payload = {
-    id: user.id,
-    date: Date.now()
-  };
-
-  const token: string = jwt.sign(payload, process.env.JWT_KEY!);
-
-  return token;
-}
-
 schema.statics.findUser = async (email: string, password: string) => {
   const user = await User.findOne({email});
 
@@ -67,7 +54,6 @@ interface IUserDocument extends Document{
   id: string;
   email: string;
   password: string;
-  generateAuthToken(): string;
 }
 
 interface IUserModel extends Model<IUserDocument>{

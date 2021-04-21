@@ -18,7 +18,10 @@ const main = async () => {
     resolvers: [TodoResolver, UserResolver],
   });
 
-  const apolloServer: ApolloServer = new ApolloServer({ schema });
+  const apolloServer: ApolloServer = new ApolloServer({
+    schema,
+    context: ({ req, res }) => ({ req, res }),
+  });
   apolloServer.applyMiddleware({ app });
 
   app.listen(PORT, () =>
