@@ -1,13 +1,12 @@
-import {Col, Row, Card} from "antd";
+import { UserForm } from "../components/user-form"
 
-export const Login = () => {
+
+interface LoginProps{}
+
+export const Login: React.FC<LoginProps> = () => {
   return (
-    <main style={{padding: "0.8rem"}}>
-      <Row justify="center">
-        <Col>
-          <Card title="Login"></Card>
-        </Col>
-      </Row>
+    <main style={{ padding: "1rem" }}>
+      <UserForm type="login"/>
     </main>
   );
 };
