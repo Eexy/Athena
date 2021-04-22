@@ -1,7 +1,7 @@
 import { Col, Row, Card, Form, Input, Divider, Button } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-
+import { useLoginMutation } from "../generated/graphql";
 
 
 interface UserFormProps {
@@ -9,12 +9,21 @@ interface UserFormProps {
 }
 
 export const UserForm: React.FC<UserFormProps>= ({type}) => {
+  const email: string = "test2@gmail.com";
+  const password:string = "123";
+  
+  const [, login] = useLoginMutation();
+
+  const log = async () => {
+    const res = await login({email, password});
+    console.log(res.data?.login)
+  }
 
   return (
     <Row justify="center">
       <Col>
         <Card title={type === "login" ? "Login" : "Signup"}>
-          <Form colon={true}>
+          <Form colon={true} onFinish={log}>
             <Form.Item
               label="Email"
               name="email"
