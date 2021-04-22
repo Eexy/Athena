@@ -6,7 +6,8 @@ import { Navbar } from "./components/navbar";
 import { Login } from "./pages/login";
 import { Signup } from "./pages/signup";
 
-function App() {
+
+export const App = () => {
   return (
     <Router>
       <header style={{boxShadow: '0 2px 8px #f0f1f2'}}>
@@ -27,5 +28,3 @@ function App() {
     </Router>
   );
 }
-
-export default App;

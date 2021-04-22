@@ -1,5 +1,5 @@
 interface DashboardProps {}
 
-export const dashboard: React.FC<DashboardProps> = () => {
+export const Dashboard: React.FC<DashboardProps> = () => {
   return <div>Dashboard</div>;
 };
