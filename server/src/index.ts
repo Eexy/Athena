@@ -1,7 +1,7 @@
 import "dotenv/config";
 import "reflect-metadata";
 import "./utils/db";
-import express from "express";
+import express, { Response } from "express";
 import cors from "cors";
 import { buildSchema } from "type-graphql";
 import { TodoResolver } from "./resolvers/todo-resolver";
@@ -15,6 +15,14 @@ const main = async () => {
 
   app.use(cors());
   app.use(cookieParser());
+
+  app.get("/", (_, res: Response) => {
+    res
+      .status(200)
+      .send(
+        '<p>You can check the <a href="https://github.com/Eexy/athena/tree/main/server">Git repo</a></p>'
+      );
+  });
 
   const schema = await buildSchema({
     resolvers: [TodoResolver, UserResolver],
