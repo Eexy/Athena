@@ -1,4 +1,4 @@
-query Todos($limit: Float, $skip: Float, $completed: Boolean){
+query Todos{
   todos{
     id,
     desc,

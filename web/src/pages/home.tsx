@@ -1,8 +1,5 @@
-interface HomeProps{
-  isAuth: boolean;
-}
+interface HomeProps {}
 
-export const Home: React.FC<HomeProps> = ({isAuth}) => {
-  console.log(isAuth);
-  return (<p>Hello World</p>);
-}
+export const Home: React.FC<HomeProps> = () => {
+  return <p>Hello World</p>;
+};

@@ -19,7 +19,7 @@ export const App = () => {
 
       <Switch>
         <Route exact path="/">
-          <Home isAuth={isAuth} />
+          <Home  />
         </Route>
         <Route exact path="/login">
           <Login setAuth={setAuth}/>
@@ -28,7 +28,7 @@ export const App = () => {
           <Signup setAuth={setAuth}/>
         </Route>
         <Route exact path="/dashboard">
-          <Dashboard />
+          <Dashboard isAuth={isAuth} setAuth={setAuth} />
         </Route>
       </Switch>
     </Router>

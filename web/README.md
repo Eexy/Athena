@@ -18,4 +18,5 @@
     - [x] change on connect
   - [ ] todo
   - [ ] todolist
+  - [ ] todo-input-bar
 - [x] configure urql client
