@@ -5,5 +5,6 @@ declare namespace NodeJS{
     NODE_ENV: string;
     ATLAS_PWD: string;
     ATLAS_USER: string;
+    ORIGIN: string;
   }
 }
