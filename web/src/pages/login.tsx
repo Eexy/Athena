@@ -3,11 +3,11 @@ import { useHistory } from "react-router-dom";
 import { UserForm } from "../components/user-form"
 import { useLoginMutation} from "../generated/graphql";
 
+interface LoginProps{
+  setAuth(value: boolean): void;
+}
 
-
-interface LoginProps{}
-
-export const Login: React.FC<LoginProps> = () => {
+export const Login: React.FC<LoginProps> = ({setAuth}) => {
   const history = useHistory();
   const [error, setError] = useState("");
   const [, login] = useLoginMutation();
@@ -22,6 +22,7 @@ export const Login: React.FC<LoginProps> = () => {
     }
 
     if(data?.login.ok){
+      setAuth(true);
       history.push("/dashboard");
     }
   } 

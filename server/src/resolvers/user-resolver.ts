@@ -39,8 +39,7 @@ export class UserResolver {
     try {
       const user = await UModel.findUser(email, password);
       loginResponse.ok = true;
-      const token = generateAuthToken({ id: user.id, date: Date.now() })
-      sendToken(res, token);
+      sendToken(res, generateAuthToken({ id: user.id, date: Date.now() }));
     } catch (e) {
       loginResponse.error = e.message;
     }
@@ -49,15 +48,15 @@ export class UserResolver {
 
   @UseMiddleware(auth)
   @Mutation((_) => Boolean)
-  logout(@Ctx() {res}: Context){
-    try{
-      res.clearCookie('jid');
-    }catch(e){
+  logout(@Ctx() { res }: Context) {
+    try {
+      res.clearCookie("jid");
+    } catch (e) {
       throw new Error("Unable to logout");
     }
 
     return true;
-  };
+  }
 
   @UseMiddleware(auth)
   @Mutation((_) => Boolean)
@@ -108,8 +107,7 @@ export class UserResolver {
     try {
       await user.save();
       registerResponse.ok = true;
-      const token = generateAuthToken({ id: user.id, date: Date.now() })
-      sendToken(res, token);
+      sendToken(res, generateAuthToken({ id: user.id, date: Date.now() }));
     } catch (e) {
       if (e.message.includes("`password` is required")) {
         registerResponse.error = "password is required";

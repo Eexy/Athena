@@ -4,9 +4,11 @@ import { useState } from "react";
 import { useHistory } from "react-router";
 
 
-interface SignupProps {}
+interface SignupProps {
+  setAuth(value: boolean): void;
+}
 
-export const Signup: React.FC<SignupProps> = () => {
+export const Signup: React.FC<SignupProps> = ({setAuth}) => {
   const history = useHistory();
   const [error, setError] = useState("");
   const [, register] = useRegisterMutation();
@@ -21,6 +23,7 @@ export const Signup: React.FC<SignupProps> = () => {
     }
 
     if(data?.register.ok){
+      setAuth(true);
       history.push("/dashboard");
     }
   } 

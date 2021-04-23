@@ -6,28 +6,31 @@ import { Navbar } from "./components/navbar";
 import { Login } from "./pages/login";
 import { Signup } from "./pages/signup";
 import { Dashboard } from "./pages/dashboard";
+import { useState } from "react";
 
 export const App = () => {
-  return (
-      <Router>
-        <header style={{ boxShadow: "0 2px 8px #f0f1f2" }}>
-          <Navbar />
-        </header>
+  const [isAuth, setAuth] = useState(false);
 
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/login">
-            <Login />
-          </Route>
-          <Route exact path="/signup">
-            <Signup />
-          </Route>
-          <Route exact path="/dashboard">
-            <Dashboard />
-          </Route>
-        </Switch>
-      </Router>
+  return (
+    <Router>
+      <header style={{ boxShadow: "0 2px 8px #f0f1f2" }}>
+        <Navbar />
+      </header>
+
+      <Switch>
+        <Route exact path="/">
+          <Home isAuth={isAuth} />
+        </Route>
+        <Route exact path="/login">
+          <Login setAuth={setAuth}/>
+        </Route>
+        <Route exact path="/signup">
+          <Signup setAuth={setAuth}/>
+        </Route>
+        <Route exact path="/dashboard">
+          <Dashboard />
+        </Route>
+      </Switch>
+    </Router>
   );
 };
