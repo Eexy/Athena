@@ -2,6 +2,7 @@ import { useHistory } from "react-router-dom";
 import { TodoInputBar } from "../components/todo-input-bar";
 import { TodoList } from "../components/todo-list";
 import { useCreateTodoMutation, useTodosQuery } from "../generated/graphql";
+import {Row} from "antd";
 
 interface DashboardProps {
   isAuth: boolean;
@@ -29,15 +30,20 @@ export const Dashboard: React.FC<DashboardProps> = ({ isAuth }) => {
   }
 
   const addTodoCallback = async (desc: string) => {
-    const res = await addTodo({desc});
+    try{
+      await addTodo({ desc });
+    }catch(e){
+      history.push("/login");
+    }
     queryTodos();
-    console.log(result);
-  }
+  };
 
   return (
-    <main style={{padding: '1.5rem'}}>
+    <main style={{ padding: "1.5rem" }}>
       <TodoInputBar addTodoCallback={addTodoCallback} />
-      <TodoList todos={result.data?.todos} />
+      <Row justify="center" style={{padding: '2rem 0'}}>
+        <TodoList todos={result.data?.todos} />
+      </Row>
     </main>
   );
 };

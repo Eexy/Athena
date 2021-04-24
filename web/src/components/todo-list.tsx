@@ -1,13 +1,25 @@
-import { Todo } from "./todo"
+import { useMediaQuery } from "react-responsive";
+import { Todo } from "./todo";
 
-interface TodoListProps{
+interface TodoListProps {
   todos?: any[] | undefined;
 }
 
-export const TodoList : React.FC<TodoListProps> = ({todos}) => {
+export const TodoList: React.FC<TodoListProps> = ({ todos }) => {
+  const isLargeScreen = useMediaQuery({ query: "(min-width: 70px)" });
+
   return (
-    <div>
-      {todos ? todos.map(todo => <Todo desc={todo.desc} completed={todo.completed}/>): null}
+    <div style={isLargeScreen ? { width: "700px" } : {}}>
+      {todos
+        ? todos.map((todo) => (
+            <Todo
+              key={todo.id}
+              id={todo.id}
+              desc={todo.desc}
+              completed={todo.completed}
+            />
+          ))
+        : null}
     </div>
-  )
-} 
+  );
+};
