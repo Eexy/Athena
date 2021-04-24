@@ -38,11 +38,15 @@ export const Dashboard: React.FC<DashboardProps> = ({ isAuth }) => {
     queryTodos();
   };
 
+  const updateTodoList = () => {   
+    queryTodos();
+  }
+
   return (
     <main style={{ padding: "1.5rem" }}>
       <TodoInputBar addTodoCallback={addTodoCallback} />
       <Row justify="center" style={{padding: '2rem 0'}}>
-        <TodoList todos={result.data?.todos} />
+        <TodoList todos={result.data?.todos} updateTodoList={updateTodoList}/>
       </Row>
     </main>
   );

@@ -1,16 +1,18 @@
 import { Checkbox, Row, Col, Divider, Button } from "antd";
 import { useState } from "react";
-import { useUpdateTodoStatusMutation} from "../generated/graphql";
+import { useDeleteTodoMutation, useUpdateTodoStatusMutation} from "../generated/graphql";
 
 interface TodoProps {
   desc: string;
   completed: boolean;
   id: string;
+  updateTodoList(): void;
 }
 
-export const Todo: React.FC<TodoProps> = ({ id, desc, completed }) => {
+export const Todo: React.FC<TodoProps> = ({ id, desc, completed, updateTodoList }) => {
   const [isCompleted, setStatus] = useState(completed);
   const [,updateTodoStatus] = useUpdateTodoStatusMutation();
+  const [,deleteTodo] = useDeleteTodoMutation();
 
   const handleOnChange = async () => {
     try{
@@ -20,6 +22,15 @@ export const Todo: React.FC<TodoProps> = ({ id, desc, completed }) => {
     }
     setStatus(!isCompleted);
   };
+
+  const handleOnClick = async () => {
+    try{
+      await deleteTodo({id});
+      updateTodoList();
+    }catch(e){
+      console.log(e);
+    }
+  }
 
   return (
     <div className="todo">
@@ -39,7 +50,7 @@ export const Todo: React.FC<TodoProps> = ({ id, desc, completed }) => {
         </Row>
         <Row>
           <Col>
-            <Button danger>Delete</Button>
+            <Button onClick={handleOnClick} danger>Delete</Button>
           </Col>
         </Row>
       </Row>

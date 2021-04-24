@@ -3,8 +3,9 @@ import { App } from "./App";
 
 const client = createClient({
   url: "http://localhost:4000/graphql",
+  requestPolicy: 'cache-and-network',
   fetchOptions: () => ({
-    credentials: 'include'
+    credentials: 'include',
   })
 
 });

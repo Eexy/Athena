@@ -3,9 +3,10 @@ import { Todo } from "./todo";
 
 interface TodoListProps {
   todos?: any[] | undefined;
+  updateTodoList(): void;
 }
 
-export const TodoList: React.FC<TodoListProps> = ({ todos }) => {
+export const TodoList: React.FC<TodoListProps> = ({ todos, updateTodoList }) => {
   const isLargeScreen = useMediaQuery({ query: "(min-width: 70px)" });
 
   return (
@@ -17,6 +18,7 @@ export const TodoList: React.FC<TodoListProps> = ({ todos }) => {
               id={todo.id}
               desc={todo.desc}
               completed={todo.completed}
+              updateTodoList={updateTodoList}
             />
           ))
         : null}

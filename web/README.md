@@ -7,16 +7,17 @@
 - [x] install react-responsive
 - [ ] pages
   - [ ] Home
-  - [ ] dashboard
+  - [x] dashboard
   - [x] login
   - [x] signup
-- [ ] components
+- [x] components
   - [x] navbar
     - [x] change if connected
   - [x] login/signup form
   - [x] navbar-menu
     - [x] change on connect
-  - [ ] todo
-  - [ ] todolist
-  - [ ] todo-input-bar
+  - [x] todo
+  - [x] todolist
+  - [x] todo-input-bar
 - [x] configure urql client
+- [ ] clean code
