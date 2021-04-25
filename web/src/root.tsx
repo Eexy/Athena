@@ -1,13 +1,14 @@
-import { CookiesProvider } from "react-cookie";
 import { createClient, Provider } from "urql";
 import { App } from "./App";
+import { getToken } from "./utils/token";
 
 const client = createClient({
   url: "https://eexy-athena-api.herokuapp.com/graphql",
   requestPolicy: "cache-and-network",
-  fetchOptions: () => ({
-    credentials: "include",
-  }),
+  fetchOptions: () => {
+    const token = getToken();
+    return token ? { headers: { Authorization: `Bearer ${token}` } } : {};
+  },
 });
 
 export const Root = () => {

@@ -9,6 +9,7 @@ import { Dashboard } from "./pages/dashboard";
 import { useState } from "react";
 import { CookiesProvider } from "react-cookie";
 import { useCookies } from "react-cookie";
+import { setToken } from "./utils/token";
 
 export const App = () => {
   const [isAuth, setAuth] = useState(false);
@@ -16,6 +17,7 @@ export const App = () => {
 
   function getCookie(value: string){
     setCookies('jid', value, {path: '/'});
+    setToken(value);
   }
 
   return (
