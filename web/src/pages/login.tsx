@@ -17,8 +17,15 @@ export const Login: React.FC<LoginProps> = ({setAuth}) => {
   }, []);
 
   const handleFormFinish = async (email: string, password: string) => {
-    const res = await login({email, password});
-    const {data} = res;
+    let res = null;
+    try{
+      res = await login({email, password});
+      console.log(res);
+    }catch(e){
+      console.log(e);
+    }
+
+    const {data} = res!;
 
     if(data?.login.error){
       setError(data.login.error);

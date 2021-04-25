@@ -12,7 +12,7 @@
     status = 200
   [[redirects]]
     from = "/graphql"
-    to = "https://eexy-athena-api.herokuapp.com/:slat"
+    to = "https://eexy-athena-api.herokuapp.com/graphql/:slat"
     status = 200
     force = true
 
