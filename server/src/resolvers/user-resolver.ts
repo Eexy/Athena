@@ -12,7 +12,6 @@ import { User as UModel } from "../models/user";
 import { Todo as TModel } from "../models/todo";
 import { generateAuthToken } from "../utils/generate-auth-token";
 import { Context } from "../utils/types";
-import { sendToken } from "../utils/send-token";
 import { auth } from "../middlewares/auth";
 
 @Resolver(User)
@@ -33,7 +32,6 @@ export class UserResolver {
   async login(
     @Arg("email") email: string,
     @Arg("password") password: string,
-    @Ctx() { res }: Context
   ): Promise<ConnectResponse> {
     const loginResponse: ConnectResponse = { ok: false };
     try {
@@ -93,7 +91,6 @@ export class UserResolver {
   async register(
     @Arg("email") email: string,
     @Arg("password") password: string,
-    @Ctx() { res }: Context
   ): Promise<ConnectResponse> {
     const exist = await UModel.findOne({ email });
     const registerResponse: ConnectResponse = { ok: false };

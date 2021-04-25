@@ -8,6 +8,6 @@ export class ConnectResponse {
   @Field({ nullable: true })
   error?: string = "";
 
-  @Field({nullable: true})
+  @Field({ nullable: true })
   token?: string = "";
 }
