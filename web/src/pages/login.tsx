@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { UserForm } from "../components/user-form"
 import { useLoginMutation} from "../generated/graphql";
@@ -12,6 +12,9 @@ export const Login: React.FC<LoginProps> = ({setAuth}) => {
   const [error, setError] = useState("");
   const [, login] = useLoginMutation();
 
+  useEffect(() => {
+    document.title = "Athena | Login"
+  }, []);
 
   const handleFormFinish = async (email: string, password: string) => {
     const res = await login({email, password});

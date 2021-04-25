@@ -1,6 +1,6 @@
 import { UserForm } from "../components/user-form";
 import { useRegisterMutation} from "../generated/graphql";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 
 
@@ -12,6 +12,10 @@ export const Signup: React.FC<SignupProps> = ({setAuth}) => {
   const history = useHistory();
   const [error, setError] = useState("");
   const [, register] = useRegisterMutation();
+
+  useEffect(() => {
+    document.title = "Athena | Signup"
+  }, []);
 
 
   const handleFormFinish = async (email: string, password: string) => {

@@ -3,6 +3,7 @@ import { TodoInputBar } from "../components/todo-input-bar";
 import { TodoList } from "../components/todo-list";
 import { useCreateTodoMutation, useTodosQuery } from "../generated/graphql";
 import {Row} from "antd";
+import {useEffect} from "react";
 
 interface DashboardProps {
   isAuth: boolean;
@@ -13,6 +14,10 @@ export const Dashboard: React.FC<DashboardProps> = ({ isAuth }) => {
   const history = useHistory();
   const [result, queryTodos] = useTodosQuery();
   const [, addTodo] = useCreateTodoMutation();
+
+  useEffect(() => {
+    document.title = "Athena | Dashboard"
+  }, []);
 
   // if user is not authentified redirect to login page
   if (!isAuth) {
