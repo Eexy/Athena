@@ -14,6 +14,7 @@ import { generateAuthToken } from "../utils/generate-auth-token";
 import { Context } from "../utils/types";
 import { auth } from "../middlewares/auth";
 import { sendRegistrationEmail } from "../utils/email";
+import { sendToken } from "../utils/send-token";
 
 @Resolver(User)
 export class UserResolver {
@@ -93,7 +94,7 @@ export class UserResolver {
   @Mutation((_) => ConnectResponse)
   async register(
     @Arg("email") email: string,
-    @Arg("password") password: string
+    @Arg("password") password: string,
   ): Promise<ConnectResponse> {
     const exist = await UModel.findOne({ email });
     const registerResponse: ConnectResponse = { ok: false };
