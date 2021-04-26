@@ -12,14 +12,9 @@ import cookieParser from "cookie-parser";
 const main = async () => {
   const PORT = parseInt(process.env.PORT!) || 4000;
   const app: express.Express = express();
-  let origin: string = "http://localhost:3000";
-
-  if((process.env.NODE_ENV!) === "production"){
-    origin = process.env.ORIGIN!;
-  }
 
   app.use(cors({
-    origin,
+    origin: ["http://localhost:3000", process.env.ORIGIN!],
     credentials: true
   }));
   app.use(cookieParser());
