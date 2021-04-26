@@ -12,10 +12,12 @@ import { useCookies } from "react-cookie";
 
 export const App = () => {
   const [isAuth, setAuth] = useState(false);
-  const [, setCookies, removeCookie] = useCookies(['jid']);
+  const [cookies, setCookies, removeCookie] = useCookies(['jid']);
 
   function getCookie(value: string){
+    console.log(value);
     setCookies('jid', value, {path: '/'});
+    console.log(cookies);
   }
 
   return (
