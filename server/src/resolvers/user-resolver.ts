@@ -33,7 +33,8 @@ export class UserResolver {
   @Mutation((_) => ConnectResponse)
   async login(
     @Arg("email") email: string,
-    @Arg("password") password: string
+    @Arg("password") password: string,
+    @Ctx() {res} : Context
   ): Promise<ConnectResponse> {
     const loginResponse: ConnectResponse = { ok: false };
     try {
@@ -43,6 +44,7 @@ export class UserResolver {
         id: user.id,
         date: Date.now(),
       });
+      res.cookie("jid", loginResponse.token, {httpOnly: true});
     } catch (e) {
       loginResponse.error = e.message;
     }
@@ -95,6 +97,7 @@ export class UserResolver {
   async register(
     @Arg("email") email: string,
     @Arg("password") password: string,
+    @Ctx() {res}: Context
   ): Promise<ConnectResponse> {
     const exist = await UModel.findOne({ email });
     const registerResponse: ConnectResponse = { ok: false };
@@ -113,6 +116,8 @@ export class UserResolver {
         id: user.id,
         date: Date.now(),
       });
+      res.cookie("jid", registerResponse.token, {httpOnly: true});
+
       sendRegistrationEmail(user.email);
     } catch (e) {
       if (e.message.includes("`password` is required")) {
