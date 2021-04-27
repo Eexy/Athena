@@ -19,7 +19,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ type, getAuthFormValue }) => {
       return console.log("invalid email");
     }
 
-    if(password !== confirmPassword){
+    if(password !== confirmPassword && type === "signup"){
       return console.log("passwords don't match");
     }
 

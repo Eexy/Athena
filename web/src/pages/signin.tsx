@@ -1,21 +1,37 @@
 import { useEffect } from "react";
 import AuthForm from "../components/auth-form";
+import { useLoginMutation } from "../generated/graphql";
 import PageProps from "../utils/page-props";
 
-interface SigninProps extends PageProps  {}
+interface SigninProps extends PageProps {
+  setAuthToken(token: string): void;
+}
 
-const Signin: React.FC<SigninProps> = ({pageName}) => {
+const Signin: React.FC<SigninProps> = ({ pageName, setAuthToken }) => {
+  const [, login] = useLoginMutation();
+
   useEffect(() => {
     document.title = `Athena | ${pageName}`;
   }, []);
 
-  const getAuthFormValue = (email: string, password: string) => {
-    console.log({email, password});
-  }
+  const getAuthFormValue = async (email: string, password: string) => {
+    try{
+      const res = await login({email, password});
+      const {data} = res;
 
-  return <div>
-    <AuthForm type="signin" getAuthFormValue={getAuthFormValue}/>
-  </div>;
+      if(data?.login.token){
+        setAuthToken(data.login.token);
+      }
+    }catch(e){
+      console.log(e);
+    }
+  };
+
+  return (
+    <div>
+      <AuthForm type="signin" getAuthFormValue={getAuthFormValue} />
+    </div>
+  );
 };
 
 export default Signin;

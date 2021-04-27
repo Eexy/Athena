@@ -1,16 +1,31 @@
 import { useEffect } from "react";
 import AuthForm from "../components/auth-form";
+import { useRegisterMutation } from "../generated/graphql";
 import PageProps from "../utils/page-props";
 
-interface SignupProps extends PageProps{}
+interface SignupProps extends PageProps{
+  setAuthToken(token: string): void;
+}
 
-const Signup: React.FC<SignupProps> = ({pageName}) => {
+const Signup: React.FC<SignupProps> = ({pageName, setAuthToken}) => {
+  const [, signup] = useRegisterMutation();
+
   useEffect(() => {
     document.title = `Athena | ${pageName}`;
   }, []);
 
-  const getAuthFormValue = (email: string, password: string) => {
-    console.log({email, password});
+  const getAuthFormValue = async (email: string, password: string) => {
+    try{
+      const res = await signup({email, password});
+      const {data} = res;
+
+      if(data?.register.token){
+        setAuthToken(data.register.token);
+      }
+    }catch(e){
+      console.log(e);
+    }
+
   }
 
   return <div>
