@@ -6,22 +6,10 @@ import Signup from "./pages/signup";
 import Home from "./pages/home";
 import { Provider } from "urql";
 import client from "./utils/client";
-import { CookiesProvider, useCookies } from "react-cookie";
 import Dashboard from "./pages/dashboard";
 
 function App() {
-  const [cookies, setCookie] = useCookies(["jid"]);
-
-  const handleNewAuthToken = (token: string) => {
-    setCookie("jid", token, { path: "/" });
-  };
-
-  const getAuthCookie = () => {
-    return cookies['jid'];
-  }
-
   return (
-    <CookiesProvider>
       <Provider value={client}>
         <Router>
           <div className="App">
@@ -31,19 +19,18 @@ function App() {
                 <Home pageName="Athena"/>
               </Route>
               <Route exact path="/signin">
-                <Signin pageName="Signin" setAuthToken={handleNewAuthToken} />
+                <Signin pageName="Signin"  />
               </Route>
               <Route exact path="/signup">
-                <Signup pageName="Signup" setAuthToken={handleNewAuthToken} />
+                <Signup pageName="Signup"  />
               </Route>
               <Route exact path="/dashboard">
-                <Dashboard pageName="Dashboard" getAuthCookie={getAuthCookie} />
+                <Dashboard pageName="Dashboard" />
               </Route>
             </Switch>
           </div>
         </Router>
       </Provider>
-    </CookiesProvider>
   );
 }
 

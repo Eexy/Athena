@@ -4,10 +4,9 @@ import { useLoginMutation } from "../generated/graphql";
 import PageProps from "../utils/page-props";
 
 interface SigninProps extends PageProps {
-  setAuthToken(token: string): void;
 }
 
-const Signin: React.FC<SigninProps> = ({ pageName, setAuthToken }) => {
+const Signin: React.FC<SigninProps> = ({ pageName }) => {
   const [, login] = useLoginMutation();
 
   useEffect(() => {
@@ -19,9 +18,9 @@ const Signin: React.FC<SigninProps> = ({ pageName, setAuthToken }) => {
       const res = await login({email, password});
       const {data} = res;
 
-      if(data?.login.token){
-        setAuthToken(data.login.token);
-      }
+      // if(data?.login.token){
+      //   setAuthToken(data.login.token);
+      // }
     }catch(e){
       console.log(e);
     }
