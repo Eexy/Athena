@@ -142,8 +142,8 @@
         "affectsGlobalScope": true
       },
       "./src/env.d.ts": {
-        "version": "bda10411db57283633334ef7c8aa5a6c065323a92a7867c05bd8c3c2297f4a2f",
-        "signature": "bda10411db57283633334ef7c8aa5a6c065323a92a7867c05bd8c3c2297f4a2f",
+        "version": "b686e670b1c89dd594ec4bf470cd1c2313b1acc07442ad8f15143451cf5f6fa9",
+        "signature": "b686e670b1c89dd594ec4bf470cd1c2313b1acc07442ad8f15143451cf5f6fa9",
         "affectsGlobalScope": true
       },
       "./node_modules/@types/node/globals.d.ts": {
@@ -2112,7 +2112,7 @@
         "affectsGlobalScope": false
       },
       "./src/middlewares/auth.ts": {
-        "version": "d85fdb0b97ac27ca4afb4a218bfce49a5e1e9339e6d27ae2a393a824da753dfd",
+        "version": "f8b4a9cb0352b6e5deeb4f1c9dec391c2a48d35be2d84c1bd692dcac78e53d8b",
         "signature": "711f78be78beb79a1098513d3981ad7a1ff886da46381d13e5b2538d6fb4e526",
         "affectsGlobalScope": false
       },
@@ -2867,18 +2867,93 @@
         "affectsGlobalScope": false
       },
       "./src/entity/connect-response.ts": {
-        "version": "30dbf2db723019189295f57d0ccd1bcfde9650db54e75bf91b7af58334c8df5d",
-        "signature": "84b5ea93291f52b392659f380aca64343763ff14aaec68a4e1c7282f810533e4",
+        "version": "fbe6d56dbef3a4a18c6b19f2dc142d67e580fff8cc31cd5203eb98b0b398d988",
+        "signature": "7aa2aedf690d09aa14351be41e2be6b89d3f64079e2d5737eeb76b3d929fabc9",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@sendgrid/helpers/classes/attachment.d.ts": {
+        "version": "cd65558d80bf2ec0f826e7c9cc753c7c9113b50a492315f97872e9da27840530",
+        "signature": "cd65558d80bf2ec0f826e7c9cc753c7c9113b50a492315f97872e9da27840530",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@sendgrid/helpers/classes/email-address.d.ts": {
+        "version": "4b2ebe59f23314851c4cf4d65b194e3a65b68bdf0cdc1be2ffe19406605c9694",
+        "signature": "4b2ebe59f23314851c4cf4d65b194e3a65b68bdf0cdc1be2ffe19406605c9694",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@sendgrid/helpers/classes/personalization.d.ts": {
+        "version": "b1f0a09685cde3ffe288bcee69cf6f4a4ce8d051becd43d4b3721d610736be0d",
+        "signature": "b1f0a09685cde3ffe288bcee69cf6f4a4ce8d051becd43d4b3721d610736be0d",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@sendgrid/helpers/classes/mail.d.ts": {
+        "version": "4749d4f7f522e14f5fe23ec0cbdf4c7381788102998713251282af6b1582267b",
+        "signature": "4749d4f7f522e14f5fe23ec0cbdf4c7381788102998713251282af6b1582267b",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@sendgrid/helpers/classes/response.d.ts": {
+        "version": "dbd416a31ba77a6d90ea4163c2fff64c675d7377bf4c637776e0b08fc225db48",
+        "signature": "dbd416a31ba77a6d90ea4163c2fff64c675d7377bf4c637776e0b08fc225db48",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@sendgrid/helpers/classes/response-error.d.ts": {
+        "version": "5b54a276dde01f6f7120b4ead0bce82dfdd6a52e0e001a2fd5f0ccc6f470fa6b",
+        "signature": "5b54a276dde01f6f7120b4ead0bce82dfdd6a52e0e001a2fd5f0ccc6f470fa6b",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@sendgrid/helpers/classes/index.d.ts": {
+        "version": "360de32ec39b1699ade98153c3f8351988e85b878bdf12907fd39398aa8a8fe0",
+        "signature": "360de32ec39b1699ade98153c3f8351988e85b878bdf12907fd39398aa8a8fe0",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@sendgrid/helpers/classes/request.d.ts": {
+        "version": "0a9584867a25e2f2db31244e887b0afaad520da2a8bae39dc3b595e2338f0c29",
+        "signature": "0a9584867a25e2f2db31244e887b0afaad520da2a8bae39dc3b595e2338f0c29",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@sendgrid/client/src/request.d.ts": {
+        "version": "404d0cb13e779108e74a5b1e02ec10a8e9933b825f300c797ba4558451784de5",
+        "signature": "404d0cb13e779108e74a5b1e02ec10a8e9933b825f300c797ba4558451784de5",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@sendgrid/client/src/response.d.ts": {
+        "version": "4ffee86e26af85318716d9a053a33b2659c987a9492015435b213f0ccf04a491",
+        "signature": "4ffee86e26af85318716d9a053a33b2659c987a9492015435b213f0ccf04a491",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@sendgrid/client/src/client.d.ts": {
+        "version": "f7a592828f97073c2eb274e16daed10d8f7c82a015a7d4694f3d40a09a559eeb",
+        "signature": "f7a592828f97073c2eb274e16daed10d8f7c82a015a7d4694f3d40a09a559eeb",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@sendgrid/client/index.d.ts": {
+        "version": "c9d70252b35da8cb8137d70b02a383e7edc3c2e1e6c37ea87ffef982a7eaf644",
+        "signature": "c9d70252b35da8cb8137d70b02a383e7edc3c2e1e6c37ea87ffef982a7eaf644",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@sendgrid/mail/src/mail.d.ts": {
+        "version": "7189cd6797bf2255b4f86b88dfdbe69774070cb3e21a2dd9228b1d868275e35d",
+        "signature": "7189cd6797bf2255b4f86b88dfdbe69774070cb3e21a2dd9228b1d868275e35d",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@sendgrid/mail/index.d.ts": {
+        "version": "c4aa043e77a847629a298e6182d4bae576f6c6e2f309f3ae11c58ed79b0dab64",
+        "signature": "c4aa043e77a847629a298e6182d4bae576f6c6e2f309f3ae11c58ed79b0dab64",
+        "affectsGlobalScope": false
+      },
+      "./src/utils/email.ts": {
+        "version": "40c267c3172b169c785cc147fb2d07826dd1c3241a6750cf3e6f9287f8d595c6",
+        "signature": "6bd60b31e503a3ce03e08ca9d470095f7456ee0d8469daffb9111b666a732b79",
         "affectsGlobalScope": false
       },
       "./src/utils/send-token.ts": {
-        "version": "d3d54996f60d8ccd4e33f6cfbb05e9b8aa2ea4270cbf5855912cdcefa21623ba",
+        "version": "e3786ddec8cada3d2356b9c3cca00c86be2272cae79c32928ae05c622c9d7776",
         "signature": "33460240e4e16dd44df8f2b78a1c22bc06ee7171020d2d32cd95d36a872bcbfa",
         "affectsGlobalScope": false
       },
       "./src/resolvers/user-resolver.ts": {
-        "version": "10ba51b8974f7361f056b426c4d8c8ea91cc0f208d3eed299c84bacf3f73b808",
-        "signature": "47a177c18e73d4ffa1f10ef81bd09d2698f07afb15d143128230c6fe68abe8d7",
+        "version": "3b2f1da0286d4e2039a3961244f9bf19292058ea5cedd359a8fa7d3900b916f9",
+        "signature": "e1d1952a73d072d4043f05f32ea0577b4f788455aecfbfc0066ff97414024ec4",
         "affectsGlobalScope": false
       },
       "./node_modules/@types/cookie-parser/index.d.ts": {
@@ -2887,7 +2962,7 @@
         "affectsGlobalScope": false
       },
       "./src/index.ts": {
-        "version": "93322c39709ed3287baff302e64455d97510996890bdd2b8924141d408378295",
+        "version": "38319b2798b644f40d20daa4c76f76576aeaa6ee4f21c44ee0ec509b316ec362",
         "signature": "2046730a30c35734345a869d488e2e3614524d25949e2552e9f231e02dcc2879",
         "affectsGlobalScope": false
       },
@@ -3204,6 +3279,84 @@
         "./node_modules/@types/mongoose/index.d.ts",
         "./node_modules/@types/node/http.d.ts",
         "./node_modules/graphql/index.d.ts",
+        "./node_modules/mongoose/index.d.ts"
+      ],
+      "./node_modules/@sendgrid/client/index.d.ts": [
+        "./node_modules/@sendgrid/client/src/client.d.ts",
+        "./node_modules/@types/mongoose/index.d.ts",
+        "./node_modules/mongoose/index.d.ts"
+      ],
+      "./node_modules/@sendgrid/client/src/client.d.ts": [
+        "./node_modules/@sendgrid/client/src/request.d.ts",
+        "./node_modules/@sendgrid/client/src/response.d.ts",
+        "./node_modules/@sendgrid/helpers/classes/index.d.ts",
+        "./node_modules/@types/mongoose/index.d.ts",
+        "./node_modules/mongoose/index.d.ts"
+      ],
+      "./node_modules/@sendgrid/client/src/request.d.ts": [
+        "./node_modules/@sendgrid/helpers/classes/request.d.ts",
+        "./node_modules/@types/mongoose/index.d.ts",
+        "./node_modules/mongoose/index.d.ts"
+      ],
+      "./node_modules/@sendgrid/client/src/response.d.ts": [
+        "./node_modules/@sendgrid/helpers/classes/response.d.ts",
+        "./node_modules/@types/mongoose/index.d.ts",
+        "./node_modules/mongoose/index.d.ts"
+      ],
+      "./node_modules/@sendgrid/helpers/classes/attachment.d.ts": [
+        "./node_modules/@types/mongoose/index.d.ts",
+        "./node_modules/mongoose/index.d.ts"
+      ],
+      "./node_modules/@sendgrid/helpers/classes/email-address.d.ts": [
+        "./node_modules/@types/mongoose/index.d.ts",
+        "./node_modules/mongoose/index.d.ts"
+      ],
+      "./node_modules/@sendgrid/helpers/classes/index.d.ts": [
+        "./node_modules/@sendgrid/helpers/classes/attachment.d.ts",
+        "./node_modules/@sendgrid/helpers/classes/email-address.d.ts",
+        "./node_modules/@sendgrid/helpers/classes/mail.d.ts",
+        "./node_modules/@sendgrid/helpers/classes/personalization.d.ts",
+        "./node_modules/@sendgrid/helpers/classes/response-error.d.ts",
+        "./node_modules/@sendgrid/helpers/classes/response.d.ts",
+        "./node_modules/@types/mongoose/index.d.ts",
+        "./node_modules/mongoose/index.d.ts"
+      ],
+      "./node_modules/@sendgrid/helpers/classes/mail.d.ts": [
+        "./node_modules/@sendgrid/helpers/classes/attachment.d.ts",
+        "./node_modules/@sendgrid/helpers/classes/email-address.d.ts",
+        "./node_modules/@sendgrid/helpers/classes/personalization.d.ts",
+        "./node_modules/@types/mongoose/index.d.ts",
+        "./node_modules/mongoose/index.d.ts"
+      ],
+      "./node_modules/@sendgrid/helpers/classes/personalization.d.ts": [
+        "./node_modules/@sendgrid/helpers/classes/email-address.d.ts",
+        "./node_modules/@types/mongoose/index.d.ts",
+        "./node_modules/mongoose/index.d.ts"
+      ],
+      "./node_modules/@sendgrid/helpers/classes/request.d.ts": [
+        "./node_modules/@types/mongoose/index.d.ts",
+        "./node_modules/@types/node/https.d.ts",
+        "./node_modules/mongoose/index.d.ts"
+      ],
+      "./node_modules/@sendgrid/helpers/classes/response-error.d.ts": [
+        "./node_modules/@types/mongoose/index.d.ts",
+        "./node_modules/mongoose/index.d.ts"
+      ],
+      "./node_modules/@sendgrid/helpers/classes/response.d.ts": [
+        "./node_modules/@types/mongoose/index.d.ts",
+        "./node_modules/mongoose/index.d.ts"
+      ],
+      "./node_modules/@sendgrid/mail/index.d.ts": [
+        "./node_modules/@sendgrid/mail/src/mail.d.ts",
+        "./node_modules/@types/mongoose/index.d.ts",
+        "./node_modules/mongoose/index.d.ts"
+      ],
+      "./node_modules/@sendgrid/mail/src/mail.d.ts": [
+        "./node_modules/@sendgrid/client/index.d.ts",
+        "./node_modules/@sendgrid/client/src/response.d.ts",
+        "./node_modules/@sendgrid/helpers/classes/index.d.ts",
+        "./node_modules/@sendgrid/helpers/classes/mail.d.ts",
+        "./node_modules/@types/mongoose/index.d.ts",
         "./node_modules/mongoose/index.d.ts"
       ],
       "./node_modules/@types/accepts/index.d.ts": [
@@ -7058,11 +7211,17 @@
         "./src/middlewares/auth.ts",
         "./src/models/todo.ts",
         "./src/models/user.ts",
+        "./src/utils/email.ts",
         "./src/utils/generate-auth-token.ts",
         "./src/utils/send-token.ts",
         "./src/utils/types.ts"
       ],
       "./src/utils/db.ts": [
+        "./node_modules/@types/mongoose/index.d.ts",
+        "./node_modules/mongoose/index.d.ts"
+      ],
+      "./src/utils/email.ts": [
+        "./node_modules/@sendgrid/mail/index.d.ts",
         "./node_modules/@types/mongoose/index.d.ts",
         "./node_modules/mongoose/index.d.ts"
       ],
@@ -7152,6 +7311,84 @@
         "./node_modules/@types/mongoose/index.d.ts",
         "./node_modules/@types/node/http.d.ts",
         "./node_modules/graphql/index.d.ts",
+        "./node_modules/mongoose/index.d.ts"
+      ],
+      "./node_modules/@sendgrid/client/index.d.ts": [
+        "./node_modules/@sendgrid/client/src/client.d.ts",
+        "./node_modules/@types/mongoose/index.d.ts",
+        "./node_modules/mongoose/index.d.ts"
+      ],
+      "./node_modules/@sendgrid/client/src/client.d.ts": [
+        "./node_modules/@sendgrid/client/src/request.d.ts",
+        "./node_modules/@sendgrid/client/src/response.d.ts",
+        "./node_modules/@sendgrid/helpers/classes/index.d.ts",
+        "./node_modules/@types/mongoose/index.d.ts",
+        "./node_modules/mongoose/index.d.ts"
+      ],
+      "./node_modules/@sendgrid/client/src/request.d.ts": [
+        "./node_modules/@sendgrid/helpers/classes/request.d.ts",
+        "./node_modules/@types/mongoose/index.d.ts",
+        "./node_modules/mongoose/index.d.ts"
+      ],
+      "./node_modules/@sendgrid/client/src/response.d.ts": [
+        "./node_modules/@sendgrid/helpers/classes/response.d.ts",
+        "./node_modules/@types/mongoose/index.d.ts",
+        "./node_modules/mongoose/index.d.ts"
+      ],
+      "./node_modules/@sendgrid/helpers/classes/attachment.d.ts": [
+        "./node_modules/@types/mongoose/index.d.ts",
+        "./node_modules/mongoose/index.d.ts"
+      ],
+      "./node_modules/@sendgrid/helpers/classes/email-address.d.ts": [
+        "./node_modules/@types/mongoose/index.d.ts",
+        "./node_modules/mongoose/index.d.ts"
+      ],
+      "./node_modules/@sendgrid/helpers/classes/index.d.ts": [
+        "./node_modules/@sendgrid/helpers/classes/attachment.d.ts",
+        "./node_modules/@sendgrid/helpers/classes/email-address.d.ts",
+        "./node_modules/@sendgrid/helpers/classes/mail.d.ts",
+        "./node_modules/@sendgrid/helpers/classes/personalization.d.ts",
+        "./node_modules/@sendgrid/helpers/classes/response-error.d.ts",
+        "./node_modules/@sendgrid/helpers/classes/response.d.ts",
+        "./node_modules/@types/mongoose/index.d.ts",
+        "./node_modules/mongoose/index.d.ts"
+      ],
+      "./node_modules/@sendgrid/helpers/classes/mail.d.ts": [
+        "./node_modules/@sendgrid/helpers/classes/attachment.d.ts",
+        "./node_modules/@sendgrid/helpers/classes/email-address.d.ts",
+        "./node_modules/@sendgrid/helpers/classes/personalization.d.ts",
+        "./node_modules/@types/mongoose/index.d.ts",
+        "./node_modules/mongoose/index.d.ts"
+      ],
+      "./node_modules/@sendgrid/helpers/classes/personalization.d.ts": [
+        "./node_modules/@sendgrid/helpers/classes/email-address.d.ts",
+        "./node_modules/@types/mongoose/index.d.ts",
+        "./node_modules/mongoose/index.d.ts"
+      ],
+      "./node_modules/@sendgrid/helpers/classes/request.d.ts": [
+        "./node_modules/@types/mongoose/index.d.ts",
+        "./node_modules/@types/node/https.d.ts",
+        "./node_modules/mongoose/index.d.ts"
+      ],
+      "./node_modules/@sendgrid/helpers/classes/response-error.d.ts": [
+        "./node_modules/@types/mongoose/index.d.ts",
+        "./node_modules/mongoose/index.d.ts"
+      ],
+      "./node_modules/@sendgrid/helpers/classes/response.d.ts": [
+        "./node_modules/@types/mongoose/index.d.ts",
+        "./node_modules/mongoose/index.d.ts"
+      ],
+      "./node_modules/@sendgrid/mail/index.d.ts": [
+        "./node_modules/@sendgrid/mail/src/mail.d.ts",
+        "./node_modules/@types/mongoose/index.d.ts",
+        "./node_modules/mongoose/index.d.ts"
+      ],
+      "./node_modules/@sendgrid/mail/src/mail.d.ts": [
+        "./node_modules/@sendgrid/client/index.d.ts",
+        "./node_modules/@sendgrid/client/src/response.d.ts",
+        "./node_modules/@sendgrid/helpers/classes/index.d.ts",
+        "./node_modules/@sendgrid/helpers/classes/mail.d.ts",
+        "./node_modules/@types/mongoose/index.d.ts",
         "./node_modules/mongoose/index.d.ts"
       ],
       "./node_modules/@types/accepts/index.d.ts": [
@@ -10971,6 +11208,20 @@
       "./node_modules/@apollographql/apollo-tools/lib/utilities/predicates.d.ts",
       "./node_modules/@apollographql/graphql-playground-html/dist/render-playground-page.d.ts",
       "./node_modules/@apollographql/graphql-upload-8-fork/index.d.ts",
+      "./node_modules/@sendgrid/client/index.d.ts",
+      "./node_modules/@sendgrid/client/src/client.d.ts",
+      "./node_modules/@sendgrid/client/src/request.d.ts",
+      "./node_modules/@sendgrid/client/src/response.d.ts",
+      "./node_modules/@sendgrid/helpers/classes/attachment.d.ts",
+      "./node_modules/@sendgrid/helpers/classes/email-address.d.ts",
+      "./node_modules/@sendgrid/helpers/classes/index.d.ts",
+      "./node_modules/@sendgrid/helpers/classes/mail.d.ts",
+      "./node_modules/@sendgrid/helpers/classes/personalization.d.ts",
+      "./node_modules/@sendgrid/helpers/classes/request.d.ts",
+      "./node_modules/@sendgrid/helpers/classes/response-error.d.ts",
+      "./node_modules/@sendgrid/helpers/classes/response.d.ts",
+      "./node_modules/@sendgrid/mail/index.d.ts",
+      "./node_modules/@sendgrid/mail/src/mail.d.ts",
       "./node_modules/@types/accepts/index.d.ts",
       "./node_modules/@types/bcrypt/index.d.ts",
       "./node_modules/@types/body-parser/index.d.ts",
@@ -11577,6 +11828,7 @@
       "./src/resolvers/todo-resolver.ts",
       "./src/resolvers/user-resolver.ts",
       "./src/utils/db.ts",
+      "./src/utils/email.ts",
       "./src/utils/generate-auth-token.ts",
       "./src/utils/send-token.ts",
       "./src/utils/types.ts"
