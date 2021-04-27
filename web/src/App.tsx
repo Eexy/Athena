@@ -15,12 +15,7 @@ export const App = () => {
   const [cookies, setCookies, removeCookie] = useCookies(['jid']);
 
   function getCookie(value: string){
-    console.log(value);
-    try{
-      setCookies('jid', "test", {path: '/'});
-    }catch(e){
-      console.log(e);
-    }
+    document.cookie= 'jwt='+value+"; path=/";
   }
 
   return (
