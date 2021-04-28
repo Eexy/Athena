@@ -1,13 +1,12 @@
 import { useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import InputTodoBar from "../components/input-todo-bar";
+import TodoList from "../components/todo-list";
 import { useTodosQuery, useCreateTodoMutation } from "../generated/graphql";
 import PageProps from "../utils/page-props";
 
 interface DashboardProps extends PageProps {}
 
 const Dashboard: React.FC<DashboardProps> = ({ pageName }) => {
-  const history = useHistory();
   const [todos, todoQuery] = useTodosQuery();
   const [, createTodo] = useCreateTodoMutation();
 
@@ -17,8 +16,8 @@ const Dashboard: React.FC<DashboardProps> = ({ pageName }) => {
 
   const addTodo = async (desc: string) => {
     try{
-      const res = await createTodo({desc});
-      const {data} = res;
+      await createTodo({desc});
+      todoQuery();
     }catch(e){
       console.log(e);
     }
@@ -29,11 +28,7 @@ const Dashboard: React.FC<DashboardProps> = ({ pageName }) => {
       <InputTodoBar addTodo={addTodo} />
       {
         todos.data ? 
-          <div className="todos-list">
-            {
-              todos.data.todos.map((todo) => <div key={todo.id}>{todo.desc}</div>)
-            }
-          </div>
+          <TodoList todos={todos.data.todos} />
         : null
       }
     </div>

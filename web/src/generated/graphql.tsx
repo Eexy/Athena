@@ -139,6 +139,20 @@ export type RegisterMutation = (
   ) }
 );
 
+export type UpdateTodoStatusMutationVariables = Exact<{
+  id: Scalars['String'];
+  completed: Scalars['Boolean'];
+}>;
+
+
+export type UpdateTodoStatusMutation = (
+  { __typename?: 'Mutation' }
+  & { updateTodoStatus: (
+    { __typename?: 'Todo' }
+    & Pick<Todo, 'completed'>
+  ) }
+);
+
 export type TodosQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -189,6 +203,17 @@ export const RegisterDocument = gql`
 
 export function useRegisterMutation() {
   return Urql.useMutation<RegisterMutation, RegisterMutationVariables>(RegisterDocument);
+};
+export const UpdateTodoStatusDocument = gql`
+    mutation UpdateTodoStatus($id: String!, $completed: Boolean!) {
+  updateTodoStatus(id: $id, completed: $completed) {
+    completed
+  }
+}
+    `;
+
+export function useUpdateTodoStatusMutation() {
+  return Urql.useMutation<UpdateTodoStatusMutation, UpdateTodoStatusMutationVariables>(UpdateTodoStatusDocument);
 };
 export const TodosDocument = gql`
     query Todos {

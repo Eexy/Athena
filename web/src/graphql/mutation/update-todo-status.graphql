@@ -1,0 +1,5 @@
+mutation UpdateTodoStatus($id: String!, $completed: Boolean!){
+  updateTodoStatus(id: $id, completed: $completed){
+    completed
+  }
+}
