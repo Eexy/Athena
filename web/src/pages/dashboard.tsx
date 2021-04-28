@@ -18,6 +18,7 @@ const Dashboard: React.FC<DashboardProps> = ({ pageName }) => {
     try{
       await createTodo({desc});
       todoQuery();
+      console.log(todos)
     }catch(e){
       console.log(e);
     }
