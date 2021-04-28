@@ -1,7 +1,7 @@
 import {createClient} from "urql";
 
 const client = createClient({
-  url: "https://eexy-athena-api.herokuapp.com/graphql",
+  url: "http://localhost:4000/graphql",
   requestPolicy: "network-only",
   fetchOptions: () => ({
     credentials: "include"

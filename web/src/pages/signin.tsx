@@ -17,10 +17,10 @@ const Signin: React.FC<SigninProps> = ({ pageName }) => {
     try{
       const res = await login({email, password});
       const {data} = res;
-
-      // if(data?.login.token){
-      //   setAuthToken(data.login.token);
-      // }
+      
+      if(data?.login.token){
+        localStorage.setItem('jid', data.login.token);
+      }
     }catch(e){
       console.log(e);
     }

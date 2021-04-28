@@ -14,3 +14,4 @@
   - [ ] auth form 
     - [x] validator
   - [ ] todo
+- [ ] auth
