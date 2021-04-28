@@ -7,22 +7,31 @@ import Home from "./pages/home";
 import { Provider } from "urql";
 import client from "./utils/client";
 import Dashboard from "./pages/dashboard";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [isAuth, setAuth] = useState(false);
+
+  useEffect(() => {
+    if(localStorage.getItem('jid')){
+      setAuth(true);
+    }
+  }, [isAuth]);
+
   return (
       <Provider value={client}>
         <Router>
           <div className="App">
-            <Header />
+            <Header setAuth={setAuth} isAuth={isAuth} />
             <Switch>
               <Route exact path="/">
                 <Home pageName="Athena"/>
               </Route>
               <Route exact path="/signin">
-                <Signin pageName="Signin"  />
+                <Signin pageName="Signin" setAuth={setAuth} />
               </Route>
               <Route exact path="/signup">
-                <Signup pageName="Signup"  />
+                <Signup pageName="Signup" setAuth={setAuth} />
               </Route>
               <Route exact path="/dashboard">
                 <Dashboard pageName="Dashboard" />

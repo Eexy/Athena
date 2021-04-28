@@ -1,13 +1,15 @@
 import { useEffect } from "react";
+import { useHistory } from "react-router";
 import AuthForm from "../components/auth-form";
 import { useRegisterMutation } from "../generated/graphql";
 import PageProps from "../utils/page-props";
 
 interface SignupProps extends PageProps{
-  
+  setAuth(auth: boolean): void;
 }
 
-const Signup: React.FC<SignupProps> = ({pageName}) => {
+const Signup: React.FC<SignupProps> = ({pageName, setAuth}) => {
+  const history = useHistory();
   const [, signup] = useRegisterMutation();
 
   useEffect(() => {
@@ -21,6 +23,8 @@ const Signup: React.FC<SignupProps> = ({pageName}) => {
 
       if(data?.register.token){
         localStorage.setItem('jid',data.register.token);
+        setAuth(true);
+        history.push('/dashboard');
       }
     }catch(e){
       console.log(e);

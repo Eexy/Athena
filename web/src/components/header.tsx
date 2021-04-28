@@ -1,21 +1,15 @@
-import { Link } from "react-router-dom"
+import HeaderMenu from "./header-menu"
 
-interface HeaderProps{};
+interface HeaderProps{
+  setAuth(auth: boolean): void;
+  isAuth: boolean;
+};
 
-const Header: React.FC<HeaderProps> = () => {
+const Header: React.FC<HeaderProps> = ({setAuth, isAuth}) => {
   return (
     <div className="header">
       <nav className="navbar">
-        <ul className="navbar-menu">
-          <li className="navbar-menu-item">
-            <Link to="/signin">
-              <button id="login-btn">Signin</button>
-            </Link>
-            <Link to="/signup">
-              <button id="signup-btn">Signup</button>
-            </Link>
-          </li>
-        </ul>
+        <HeaderMenu setAuth={setAuth} isAuth={isAuth}/>
       </nav>
     </div>
   )

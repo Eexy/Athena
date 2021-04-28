@@ -1,12 +1,15 @@
 import { useEffect } from "react";
+import { useHistory } from "react-router";
 import AuthForm from "../components/auth-form";
 import { useLoginMutation } from "../generated/graphql";
 import PageProps from "../utils/page-props";
 
 interface SigninProps extends PageProps {
+  setAuth(auth: boolean): void;
 }
 
-const Signin: React.FC<SigninProps> = ({ pageName }) => {
+const Signin: React.FC<SigninProps> = ({ pageName, setAuth }) => {
+  const history = useHistory();
   const [, login] = useLoginMutation();
 
   useEffect(() => {
@@ -20,6 +23,8 @@ const Signin: React.FC<SigninProps> = ({ pageName }) => {
       
       if(data?.login.token){
         localStorage.setItem('jid', data.login.token);
+        setAuth(true);
+        history.push('/dashboard');
       }
     }catch(e){
       console.log(e);
