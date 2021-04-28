@@ -14,7 +14,6 @@ import { generateAuthToken } from "../utils/generate-auth-token";
 import { Context } from "../utils/types";
 import { auth } from "../middlewares/auth";
 import { sendRegistrationEmail } from "../utils/email";
-import { sendToken } from "../utils/send-token";
 
 @Resolver(User)
 export class UserResolver {
@@ -34,7 +33,6 @@ export class UserResolver {
   async login(
     @Arg("email") email: string,
     @Arg("password") password: string,
-    @Ctx() {res} : Context
   ): Promise<ConnectResponse> {
     const loginResponse: ConnectResponse = { ok: false };
     try {
@@ -44,7 +42,6 @@ export class UserResolver {
         id: user.id,
         date: Date.now(),
       });
-      sendToken(res, loginResponse.token);
     } catch (e) {
       loginResponse.error = e.message;
     }
@@ -97,7 +94,6 @@ export class UserResolver {
   async register(
     @Arg("email") email: string,
     @Arg("password") password: string,
-    @Ctx() {res}: Context
   ): Promise<ConnectResponse> {
     const exist = await UModel.findOne({ email });
     const registerResponse: ConnectResponse = { ok: false };
@@ -116,8 +112,6 @@ export class UserResolver {
         id: user.id,
         date: Date.now(),
       });
-      sendToken(res, registerResponse.token);
-      
 
       sendRegistrationEmail(user.email);
     } catch (e) {
