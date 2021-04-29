@@ -1,82 +1,84 @@
-import { FormEvent, useState } from "react";
 import isEmail from "validator/lib/isEmail";
+import { Card, Form, Input, Button, Divider, Typography } from "antd";
+import { Link } from "react-router-dom";
+
+const { Title } = Typography;
 
 interface AuthFormProps {
   type: string;
   getAuthFormValue(email: string, password: string): void;
 }
 
+interface AuthFormValues {
+  email: string;
+  password: string;
+  confirmPassword?: string;
+}
+
 const AuthForm: React.FC<AuthFormProps> = ({ type, getAuthFormValue }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-
-  const handleFormSubmit = (e: FormEvent) => {
-    e.preventDefault();
-
-    // check if it's a valid email
-    if(!isEmail(email)){
+  const handleFormSubmit = ({
+    email,
+    password,
+    confirmPassword,
+  }: AuthFormValues) => {
+    if (!isEmail(email)) {
       return console.log("invalid email");
     }
 
-    if(password !== confirmPassword && type === "signup"){
+    if (password !== confirmPassword && type === "signup") {
       return console.log("passwords don't match");
     }
 
     return getAuthFormValue(email, password);
   };
 
-  const handleEmailChange = (value: string) => {
-    setEmail(value);
-  };
-
-  const handlePasswordChange = (value: string) => {
-    setPassword(value);
-  };
-
-  const handleConfirmPasswordChange = (value: string) => {
-    setConfirmPassword(value);
-  };
-
   return (
-    <div>
-      <form className="form" id="auth-form" onSubmit={handleFormSubmit}>
-        <div className="form-group">
-          <label htmlFor="email">email : </label>
-          <input
-            required
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => handleEmailChange(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">password : </label>
-          <input
-            required
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => handlePasswordChange(e.target.value)}
-            minLength={6}
-          />
-          {type === "signup" ? (
-            <input
-              required
-              type="password"
-              id="confirm-password"
-              value={confirmPassword}
-              onChange={(e) => handleConfirmPasswordChange(e.target.value)}
-              minLength={6}
-            />
-          ) : null}
-        </div>
-        <div className="form-ctas">
-          <button type="submit">{type}</button>
-        </div>
-      </form>
-    </div>
+    <Card style={{ width: "300px" }}>
+      <Title level={3} style={{ textTransform: "capitalize" }}>
+        {type}
+      </Title>
+      <Divider />
+      <Form className="form" id="auth-form" onFinish={handleFormSubmit}>
+        <Form.Item
+          name="email"
+          label="Email : "
+          rules={[{ required: true, message: "Please enter an email" }]}
+        >
+          <Input placeholder="Enter your email" />
+        </Form.Item>
+        <Form.Item
+          name="password"
+          label="Password : "
+          rules={[{ required: true, message: "Please enter password" }]}
+        >
+          <Input.Password placeholder="Enter your password" />
+        </Form.Item>
+        {type === "signup" ? (
+          <Form.Item
+            name="confirmPassword"
+            label="Confirm your password :"
+            rules={[
+              { required: true, message: "You need to confirm your password" },
+            ]}
+          >
+            <Input.Password placeholder="Confirm your password" />
+          </Form.Item>
+        ) : null}
+        <Form.Item>
+          <Button
+            htmlType="submit"
+            style={{ textTransform: "capitalize", width: "100%" }}
+            type="primary"
+          >
+            {type}
+          </Button>
+        </Form.Item>
+      </Form>
+      <Divider />
+      <Link to={type === "signup" ? "/signin" : "/signup"}>
+        <Button style={{width: "100%"}}>{type === "signup" ? "Signin" : "Signup"}</Button>
+      </Link>
+    </Card>
   );
 };
 

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import {Button} from "antd";
 
 interface HeaderMenuProps {
   setAuth(auth: boolean): void;
@@ -15,16 +16,12 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({ isAuth, setAuth }) => {
   const defaultMenu = () => {
     return (
       <React.Fragment>
-        <li className="navbar-menu-item">
           <Link to="/signin">
-            <button id="login-btn">Signin</button>
+            <Button id="login-btn" type="primary">Signin</Button>
           </Link>
-        </li>
-        <li className="navbar-menu-item">
           <Link to="/signup">
-            <button id="signup-btn">Signup</button>
+            <Button id="signup-btn">Signup</Button>
           </Link>
-        </li>
       </React.Fragment>
     );
   };
@@ -32,21 +29,17 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({ isAuth, setAuth }) => {
   const authMenu = () => {
     return (
       <React.Fragment>
-        <li className="navbar-menu-item">
           <Link to="/dashboard">
-            <button id="dashboard-btn">Dashboard</button>
+            <Button id="dashboard-btn" type="primary">Dashboard</Button>
           </Link>
-        </li>
-        <li className="navbar-menu-item">
           <Link to="/signin" onClick={handleLogoutBtn}>
-            <button id="logout-btn">Logout</button>
+            <Button id="logout-btn">Logout</Button>
           </Link>
-        </li>
       </React.Fragment>
     );
   };
 
-  return (<ul className="navbar-menu">{isAuth ? authMenu() : defaultMenu()}</ul>);
+  return (<div className="navbar-menu">{isAuth ? authMenu() : defaultMenu()}</div>);
 };
 
 export default HeaderMenu;

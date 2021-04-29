@@ -1,4 +1,3 @@
-import "./styles/App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./components/header";
 import Signin from "./pages/signin";
@@ -13,19 +12,21 @@ function App() {
   const [isAuth, setAuth] = useState(false);
 
   useEffect(() => {
-    if(localStorage.getItem('jid')){
+    if (localStorage.getItem("jid")) {
       setAuth(true);
     }
   }, [isAuth]);
 
   return (
-      <Provider value={client}>
-        <Router>
-          <div className="App">
-            <Header setAuth={setAuth} isAuth={isAuth} />
+    <Provider value={client}>
+      <Router>
+        <div className="App">
+          <Header setAuth={setAuth} isAuth={isAuth} />
+
+          <main>
             <Switch>
               <Route exact path="/">
-                <Home pageName="Athena"/>
+                <Home pageName="Athena" />
               </Route>
               <Route exact path="/signin">
                 <Signin pageName="Signin" setAuth={setAuth} />
@@ -37,9 +38,10 @@ function App() {
                 <Dashboard pageName="Dashboard" />
               </Route>
             </Switch>
-          </div>
-        </Router>
-      </Provider>
+          </main>
+        </div>
+      </Router>
+    </Provider>
   );
 }
 
