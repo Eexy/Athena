@@ -38,7 +38,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ type, getAuthFormValue }) => {
         {type}
       </Title>
       <Divider />
-      <Form className="form" id="auth-form" onFinish={handleFormSubmit}>
+      <Form className="form" id="auth-form" onFinish={handleFormSubmit} layout="vertical">
         <Form.Item
           name="email"
           label="Email : "
