@@ -22,6 +22,7 @@ const Todo: React.FC<TodoProps> = ({ id, desc, completed, updateTodoList }) => {
     try {
       await updateTodoStatus({ id, completed: !isCompleted });
       setCompleted(!isCompleted);
+      updateTodoList();
     } catch (e) {
       console.log(e);
     }
