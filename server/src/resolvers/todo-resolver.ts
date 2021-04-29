@@ -58,10 +58,16 @@ export class TodoResolver {
   @Mutation((_) => Todo)
   async createTodo(
     @Arg("desc") desc: string,
+    @Arg("priority", {nullable: true}) priority: number,
     @Ctx() { userId }: Context
   ): Promise<Todo> {
     const owner = mongoose.Types.ObjectId(userId);
     const todo = new TModel({ desc, owner });
+
+    if(priority){
+      todo.priority = priority;
+    }
+
     await todo.save();
 
     return todo;
