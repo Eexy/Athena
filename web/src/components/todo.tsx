@@ -10,10 +10,11 @@ interface TodoProps {
   desc: string;
   id: string;
   completed: boolean;
+  priority: number
   updateTodoList(): void;
 }
 
-const Todo: React.FC<TodoProps> = ({ id, desc, completed, updateTodoList }) => {
+const Todo: React.FC<TodoProps> = ({ id, desc, completed, priority, updateTodoList }) => {
   const [isCompleted, setCompleted] = useState(completed);
   const [, updateTodoStatus] = useUpdateTodoStatusMutation();
   const [, deleteTodo] = useDeleteTodoMutation();
@@ -44,6 +45,7 @@ const Todo: React.FC<TodoProps> = ({ id, desc, completed, updateTodoList }) => {
           <Col>
             <Checkbox checked={isCompleted} onChange={handleStatusChange} />
             <span style={{ paddingLeft: "1rem" }}>{desc}</span>
+            {priority > 0 ? <span style={{paddingLeft: "1.5rem"}}>priority: {priority}</span> : null}
           </Col>
           <Col>
             <Button onClick={handleDeleteBtn} danger>

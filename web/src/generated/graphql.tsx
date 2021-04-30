@@ -35,6 +35,7 @@ export type Mutation = {
 
 
 export type MutationCreateTodoArgs = {
+  priority?: Maybe<Scalars['Float']>;
   desc: Scalars['String'];
 };
 
@@ -90,6 +91,7 @@ export type Todo = {
   id: Scalars['ID'];
   desc: Scalars['String'];
   completed: Scalars['Boolean'];
+  priority: Scalars['Float'];
 };
 
 export type User = {
@@ -100,6 +102,7 @@ export type User = {
 
 export type CreateTodoMutationVariables = Exact<{
   desc: Scalars['String'];
+  priority?: Maybe<Scalars['Float']>;
 }>;
 
 
@@ -107,7 +110,7 @@ export type CreateTodoMutation = (
   { __typename?: 'Mutation' }
   & { createTodo: (
     { __typename?: 'Todo' }
-    & Pick<Todo, 'id' | 'desc' | 'completed'>
+    & Pick<Todo, 'id' | 'desc' | 'completed' | 'priority'>
   ) }
 );
 
@@ -170,17 +173,18 @@ export type TodosQuery = (
   { __typename?: 'Query' }
   & { todos: Array<(
     { __typename?: 'Todo' }
-    & Pick<Todo, 'id' | 'desc' | 'completed'>
+    & Pick<Todo, 'id' | 'desc' | 'completed' | 'priority'>
   )> }
 );
 
 
 export const CreateTodoDocument = gql`
-    mutation CreateTodo($desc: String!) {
-  createTodo(desc: $desc) {
+    mutation CreateTodo($desc: String!, $priority: Float) {
+  createTodo(desc: $desc, priority: $priority) {
     id
     desc
     completed
+    priority
   }
 }
     `;
@@ -240,6 +244,7 @@ export const TodosDocument = gql`
     id
     desc
     completed
+    priority
   }
 }
     `;

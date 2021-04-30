@@ -8,6 +8,11 @@ import Title from "antd/lib/typography/Title";
 
 interface DashboardProps extends PageProps {}
 
+interface AddTodoFormValue  {
+  desc: string;
+  priority ?:  number;
+}
+
 const Dashboard: React.FC<DashboardProps> = ({ pageName }) => {
   const [todos, todoQuery] = useTodosQuery();
   const [, createTodo] = useCreateTodoMutation();
@@ -16,11 +21,10 @@ const Dashboard: React.FC<DashboardProps> = ({ pageName }) => {
     document.title = `${pageName}`;
   });
 
-  const addTodo = async (desc: string) => {
+  const addTodo = async (values: AddTodoFormValue) => {
     try {
-      await createTodo({ desc });
+      await createTodo({ ...values });
       todoQuery();
-      console.log(todos);
     } catch (e) {
       console.log(e);
     }
