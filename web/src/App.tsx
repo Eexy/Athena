@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import Header from "./components/header";
 import Signin from "./pages/signin";
 import Signup from "./pages/signup";
@@ -21,17 +26,30 @@ function App() {
     <Provider value={client}>
       <Router>
         <div className="App">
-          <Header setAuth={setAuth} isAuth={isAuth} />
-
           <main>
             <Switch>
               <Route exact path="/">
+                <Header
+                  setAuth={setAuth}
+                  isAuth={isAuth}
+                />
+
                 <Home pageName="Athena" />
               </Route>
               <Route exact path="/signin">
+                <Header
+                  setAuth={setAuth}
+                  isAuth={isAuth}
+                />
+
                 <Signin pageName="Signin" setAuth={setAuth} />
               </Route>
               <Route exact path="/signup">
+                <Header
+                  setAuth={setAuth}
+                  isAuth={isAuth}
+                />
+
                 <Signup pageName="Signup" setAuth={setAuth} />
               </Route>
               <Route exact path="/dashboard">

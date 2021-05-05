@@ -36,7 +36,7 @@ const InputTodoBar: React.FC<InputTodoBarProps> = ({ addTodo }) => {
           >
             <Input placeholder="Do homework, clean the house..." />
           </Form.Item>
-          <Form.Item name="priority">
+          <Form.Item name="priority" style={{padding: '0 0.5rem 0 0.5rem'}}>
             <Select placeholder="Select a priority">
               <Option value="0">Basic</Option>
               <Option value="1">Priority 1</Option>
