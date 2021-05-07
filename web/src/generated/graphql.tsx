@@ -166,6 +166,17 @@ export type UpdateTodoStatusMutation = (
   ) }
 );
 
+export type MeQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type MeQuery = (
+  { __typename?: 'Query' }
+  & { me: (
+    { __typename?: 'User' }
+    & Pick<User, 'email'>
+  ) }
+);
+
 export type TodosQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -237,6 +248,17 @@ export const UpdateTodoStatusDocument = gql`
 
 export function useUpdateTodoStatusMutation() {
   return Urql.useMutation<UpdateTodoStatusMutation, UpdateTodoStatusMutationVariables>(UpdateTodoStatusDocument);
+};
+export const MeDocument = gql`
+    query Me {
+  me {
+    email
+  }
+}
+    `;
+
+export function useMeQuery(options: Omit<Urql.UseQueryArgs<MeQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<MeQuery>({ query: MeDocument, ...options });
 };
 export const TodosDocument = gql`
     query Todos {
