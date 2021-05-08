@@ -1,7 +1,7 @@
 import { Menu } from 'antd';
 import { Link } from 'react-router-dom';
 import { ExportOutlined, HomeOutlined } from '@ant-design/icons';
-import logout from '../utils/logout';
+import logout from '../scripts/logout';
 import { useState } from 'react';
 
 interface MobileMenuProps {}

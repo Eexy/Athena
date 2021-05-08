@@ -4,45 +4,47 @@ import Signin from './pages/signin';
 import Signup from './pages/signup';
 import Home from './pages/home';
 import { Provider } from 'urql';
-import client from './utils/client';
+import client from './scripts/client';
 import Dashboard from './pages/dashboard';
-import { useEffect, useState } from 'react';
+import { AuthContext } from './context/auth-context';
+import {useEffect, useMemo, useState } from 'react';
 
 function App() {
-  const [isAuth, setAuth] = useState(false);
+  const [auth, setAuth] = useState(false);
+
+  const value =  useMemo(() => ({auth, setAuth}), [auth, setAuth]);
 
   useEffect(() => {
-    if (localStorage.getItem('jid')) {
+    if(localStorage.getItem('jid')){
       setAuth(true);
     }
-  }, [isAuth]);
+    console.log(auth);
+  }, [auth]);
 
   return (
     <Provider value={client}>
       <Router>
         <div className='App'>
-          <main>
+
+          <AuthContext.Provider value={value}>
             <Switch>
               <Route exact path='/'>
-                <Header setAuth={setAuth} isAuth={isAuth} />
-
+                <Header/>
                 <Home pageName='Athena' />
               </Route>
               <Route exact path='/signin'>
-                <Header setAuth={setAuth} isAuth={isAuth} />
-
-                <Signin pageName='Signin' setAuth={setAuth} />
+                <Header />
+                <Signin pageName='Signin' />
               </Route>
               <Route exact path='/signup'>
-                <Header setAuth={setAuth} isAuth={isAuth} />
-
-                <Signup pageName='Signup' setAuth={setAuth} />
+                <Header/>
+                <Signup pageName='Signup' />
               </Route>
               <Route exact path='/dashboard'>
                 <Dashboard pageName='Dashboard' />
               </Route>
             </Switch>
-          </main>
+            </AuthContext.Provider>
         </div>
       </Router>
     </Provider>

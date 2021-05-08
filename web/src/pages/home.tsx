@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import PageProps from '../utils/page-props';
+import {  useEffect } from 'react';
+import PageProps from '../scripts/page-props';
 
 interface HomeProps extends PageProps {}
 
@@ -8,7 +8,7 @@ const Home: React.FC<HomeProps> = ({ pageName }) => {
     document.title = `${pageName}`;
   }, []);
 
-  return <div>Home</div>;
+  return (<div></div>);
 };
 
 export default Home;

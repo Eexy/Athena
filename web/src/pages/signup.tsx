@@ -1,15 +1,16 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import AuthForm from '../components/auth-form';
 import { useRegisterMutation } from '../generated/graphql';
-import PageProps from '../utils/page-props';
+import PageProps from '../scripts/page-props';
 import { Row, Col } from 'antd';
+import { AuthContext } from '../context/auth-context';
 
 interface SignupProps extends PageProps {
-  setAuth(auth: boolean): void;
 }
 
-const Signup: React.FC<SignupProps> = ({ pageName, setAuth }) => {
+const Signup: React.FC<SignupProps> = ({ pageName }) => {
+  const {setAuth} = useContext(AuthContext);
   const history = useHistory();
   const [, signup] = useRegisterMutation();
 

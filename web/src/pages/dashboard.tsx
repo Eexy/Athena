@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import InputTodoBar from '../components/input-todo-bar';
 import TodoList from '../components/todo-list';
 import { useTodosQuery, useCreateTodoMutation } from '../generated/graphql';
-import PageProps from '../utils/page-props';
+import PageProps from '../scripts/page-props';
 import { Row } from 'antd';
 import MobileMenu from '../components/mobile-menu';
 import Title from 'antd/lib/typography/Title';

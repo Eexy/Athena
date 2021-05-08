@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from 'antd';
 import { useMediaQuery } from 'react-responsive';
+import { AuthContext } from '../context/auth-context';
 
 interface HeaderMenuProps {
-  setAuth(auth: boolean): void;
-  isAuth: boolean;
 }
 
-const HeaderMenu: React.FC<HeaderMenuProps> = ({ isAuth, setAuth }) => {
+const HeaderMenu: React.FC<HeaderMenuProps> = () => {
+  const {auth, setAuth} = useContext(AuthContext);
+
   const isSmallScreen = useMediaQuery({
     query: '(max-width: 400px)',
   });
@@ -53,7 +54,7 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({ isAuth, setAuth }) => {
   };
 
   return (
-    <div className='navbar-menu'>{isAuth ? authMenu() : defaultMenu()}</div>
+    <div className='navbar-menu'> {auth ? authMenu() : defaultMenu()}</div>
   );
 };
 

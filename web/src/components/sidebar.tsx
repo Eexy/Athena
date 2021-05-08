@@ -3,7 +3,7 @@ import { Menu } from 'antd';
 import Title from 'antd/lib/typography/Title';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import logout from '../utils/logout';
+import logout from '../scripts/logout';
 
 const Sidebar = () => {
   const [current, setCurrent] = useState('dashboard');

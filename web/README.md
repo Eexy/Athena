@@ -10,8 +10,11 @@
   - [x] login / register
 - [x] components
   - [x] header
-  - [x] auth form 
+  - [x] auth form
     - [x] validator
   - [x] todo
   - [x] todolist
 - [x] auth
+- [ ] use auth context
+- [ ] clean up code / components
+- [ ] clean up folder structure ??
