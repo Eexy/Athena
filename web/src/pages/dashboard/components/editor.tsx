@@ -9,6 +9,7 @@ import {
   useCreateTodoMutation,
   useTodosQuery,
 } from '../../../generated/graphql';
+import { PlusOutlined } from '@ant-design/icons';
 
 const Editor: React.FC = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -74,6 +75,7 @@ const Editor: React.FC = () => {
       </Title>
       <TodoCounter incompleted={incompleted} />
       <Button type="primary" onClick={showModal}>
+        <PlusOutlined />
         Add Todo
       </Button>
       <AddTodoModal
