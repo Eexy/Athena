@@ -4,8 +4,8 @@
 
 - [x] install react-router
 - [x] install and configure urql
-- [ ] pages
-  - [ ] home
+- [x] pages
+  - [x] home
   - [x] dashboard
   - [x] login / register
 - [x] components
@@ -16,5 +16,5 @@
   - [x] todolist
 - [x] auth
 - [x] use auth context
-- [ ] clean up code / components
+- [x] clean up code / components
 - [x] clean up folder structure ??
