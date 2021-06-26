@@ -1,9 +1,10 @@
-import logout from "../../scripts/logout";
+import React from 'react';
+import logout from '../../scripts/logout';
 
 const Logout: React.FC = () => {
   logout();
 
-  return (<></>)
-}
+  return <></>;
+};
 
 export default Logout;

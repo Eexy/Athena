@@ -1,19 +1,15 @@
+import React, { useEffect, useState } from 'react';
 import Title from 'antd/lib/typography/Title';
-import TodoCounter from './todo-counter';
-import { Button } from 'antd';
-import { useEffect, useState } from 'react';
-import AddTodoModal from './add-todo-modal';
-import { ITodo } from '../../../utils/types';
-import TodoList from './todo-list';
+import TodoCounter from '../components/todo-counter/todo-counter';
+import TodoList from '../components/todo-list/todo-list';
 import {
   useCreateTodoMutation,
   useTodosQuery,
 } from '../../../generated/graphql';
-import { PlusOutlined } from '@ant-design/icons';
+import AddTodo from '../components/add-todo/add-todo';
 
 const Editor: React.FC = () => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [res, todosQuery] = useTodosQuery();
+  const [res, _] = useTodosQuery();
   const [todos, setTodos] = useState<ITodo[]>([]);
   const [, createTodo] = useCreateTodoMutation();
   const [incompleted, setIncompleted] = useState(0);
@@ -29,27 +25,23 @@ const Editor: React.FC = () => {
 
   // Calculate number of todo incompleted
   useEffect(() => {
-    const n = todos.filter(todo => todo.completed !== true).length;
+    const n = todos.filter((todo) => todo.completed !== true).length;
     setIncompleted(n);
   }, [todos]);
 
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
-
-  const closeModal = () => {
-    setIsModalVisible(false);
-  };
-
-  const handleOk = async (todo: ITodo) => {
+  const addTodo = async (desc: string) => {
     try {
-      const {data} = await createTodo({ ...todo });
-      todo.id = data?.createTodo.id;
-      setTodos([...todos, todo]);
+      const addDataRes = await createTodo({ desc, priority: 0 });
+      const newData = addDataRes.data;
+      const newTodo = {
+        id: newData?.createTodo.id,
+        desc,
+        priority: 0,
+      };
+      setTodos([...todos, newTodo]);
     } catch (e) {
       console.log(e);
     }
-    setIsModalVisible(false);
   };
 
   const deleteTodo = (id: string) => {
@@ -60,7 +52,10 @@ const Editor: React.FC = () => {
   const updateTodo = (id: string, completed: boolean) => {
     const newTodos = todos.map((todo) => {
       if (todo.id === id) {
-        todo.completed = completed;
+        const newTodo = todo;
+        newTodo.completed = completed;
+
+        return newTodo;
       }
 
       return todo;
@@ -74,19 +69,15 @@ const Editor: React.FC = () => {
         Dashboard
       </Title>
       <TodoCounter incompleted={incompleted} />
-      <Button type="primary" onClick={showModal}>
-        <PlusOutlined />
-        Add Todo
-      </Button>
-      <AddTodoModal
-        isVisible={isModalVisible}
-        closeModal={closeModal}
-        handleOk={handleOk}
-      />
+      <AddTodo createTodo={addTodo} />
       {fetching ? (
         <p>fetching</p>
       ) : (
-        <TodoList todos={todos} deleteTodo={deleteTodo} updateTodo={updateTodo}/>
+        <TodoList
+          todos={todos}
+          deleteTodo={deleteTodo}
+          updateTodo={updateTodo}
+        />
       )}
     </div>
   );

@@ -3,13 +3,10 @@ import { Row, Col } from 'antd';
 import { useHistory } from 'react-router';
 import { useRegisterMutation } from '../../generated/graphql';
 import AuthContext from '../../context/auth-context';
-import AuthForm from '../../shared-components/auth-form';
-import Header from '../../shared-components/header';
-import { PageProps } from '../../utils/types';
+import AuthForm from '../../shared/components/auth-form';
+import Header from '../../shared/parts/header/header';
 
-interface SignupProps extends PageProps {}
-
-const Signup: React.FC<SignupProps> = ({ pageName }) => {
+const Signup: React.FC<PageProps> = ({ pageName }) => {
   const { setAuth } = useContext(AuthContext);
   const history = useHistory();
   const [, signup] = useRegisterMutation();

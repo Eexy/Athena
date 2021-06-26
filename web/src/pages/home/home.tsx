@@ -1,11 +1,8 @@
 import React, { useEffect } from 'react';
-import Header from '../../shared-components/header';
-import { PageProps } from '../../utils/types';
-import Hero from './components/hero';
+import Header from '../../shared/parts/header/header';
+import Hero from './components/hero/hero';
 
-interface HomeProps extends PageProps {}
-
-const Home: React.FC<HomeProps> = ({ pageName }) => {
+const Home: React.FC<PageProps> = ({ pageName }) => {
   useEffect(() => {
     document.title = `${pageName}`;
   }, []);

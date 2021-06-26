@@ -47,7 +47,7 @@ const client = createClient({
             ? operation.context.fetchOptions()
             : operation.context.fetchOptions || {};
 
-        const token = state.token;
+        const { token } = state;
 
         return makeOperation(operation.kind, operation, {
           ...operation.context,

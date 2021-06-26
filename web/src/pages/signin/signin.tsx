@@ -1,15 +1,12 @@
 import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { Row, Col } from 'antd';
-import AuthForm from '../../shared-components/auth-form';
+import AuthForm from '../../shared/components/auth-form';
 import { useLoginMutation } from '../../generated/graphql';
 import AuthContext from '../../context/auth-context';
-import Header from '../../shared-components/header';
-import { PageProps } from '../../utils/types';
+import Header from '../../shared/parts/header/header';
 
-interface SigninProps extends PageProps {}
-
-const Signin: React.FC<SigninProps> = ({ pageName }) => {
+const Signin: React.FC<PageProps> = ({ pageName }) => {
   const { setAuth } = useContext(AuthContext);
   const history = useHistory();
   const [, login] = useLoginMutation();

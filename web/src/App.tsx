@@ -27,7 +27,7 @@ function App() {
           <AuthContext.Provider value={value}>
             <Switch>
               <Route exact path="/">
-                <Home pageName="Athena" />
+                <Home pageName="Home" />
               </Route>
               <Route exact path="/signin">
                 <Signin pageName="Signin" />

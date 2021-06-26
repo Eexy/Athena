@@ -7,7 +7,9 @@ interface IAuthContext {
 
 const AuthContext = createContext<IAuthContext>({
   auth: false,
-  setAuth: () => {},
+  setAuth: () => {
+    // cookie
+  },
 });
 
 export default AuthContext;
